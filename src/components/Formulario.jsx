@@ -8,35 +8,20 @@ const Formulario = () => {
   const [alerta, setAlerta] = useState("");
   const { busqueda, datosBusqueda, handleSubmit, consultarClima } = useClima();
 
-  const { ciudad, pais } = busqueda;
+  const { pais } = busqueda;
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     const { estados } = useClima();
-  //     console.log(estados[0]);
-  //   }, 1000);
-  //   return () => clearTimeout(timer);
-  // }, []);
-  // const { estados } = useClima();
   useEffect(() => {
     setTimeout(() => {
       quePais(pais);
     }, 500);
   }, [pais]);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (Object.values(busqueda).includes("")) {
-  //     setAlerta("Todos los campos son obligatorios");
-  //     return;
-  //   }
-  //   setAlerta("");
-  //   consultarClima(busqueda);
-  // };
-
   const quePais = (country) => {
     switch (country) {
+      case "US":
+        return setEstados(provincias.estadosUnidos);
+        case "MX":
+        return setEstados(provincias.mexico);
       case "AR":
         return setEstados(provincias.argentina);
       case "CL":
@@ -57,21 +42,11 @@ const Formulario = () => {
             <option value="MX">México</option>
             <option value="AR">Argentina</option>
             <option value="CL">Chile</option>
-            <option value="CR">Costa Rica</option>
-            <option value="ES">España</option>
-            <option value="PE">Perú</option>
           </select>
         </div>
         <div className="campo">
           <label htmlFor="ciudad">Ciudad</label>
-          {/* <input
-            type="text"
-            id="ciudad"
-            name="ciudad"
-            onChange={datosBusqueda}
-            value={ciudad}
-          /> */}
-          <ListaProvincias estados={estados} setAlerta={setAlerta}/>
+          <ListaProvincias estados={estados} setAlerta={setAlerta} />
         </div>
 
         <input type="submit" value="Consultar Clima" />

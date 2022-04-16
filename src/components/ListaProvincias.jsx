@@ -8,8 +8,7 @@ function ListaProvincias({ estados,setAlerta }) {
 
   let datos = "";
   if (estados != "") {
-    datos = estados;
-    console.log(datos);
+    datos = estados
   }
   return (
     <>
@@ -20,6 +19,7 @@ function ListaProvincias({ estados,setAlerta }) {
           onChange={datosBusqueda}
           value={ciudad}
         >
+          <option>Ingrese una ciudad</option>
           {datos.map((provincia) => (
             <Option key={provincia.nombre} provincia={provincia} />
           ))}
