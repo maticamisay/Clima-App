@@ -38,6 +38,7 @@ const ClimaProvider = ({ children }) => {
 
       const { data: clima } = await axios(urlClima);
       setResultado(clima);
+      console.log(clima);
     } catch (error) {
       setNoResultado("No hay resultados");
     } finally {

@@ -1,6 +1,6 @@
-import Formulario from "./Formulario"
-import Resultado from "./Resultado"
-import Loading from "./Loading"
+import Formulario from "../components/Formulario"
+import Resultado from "../components/Resultado"
+import Loading from "../components/Loading"
 import useClima from "../hooks/useClima"
 
 const AppClima = () => {

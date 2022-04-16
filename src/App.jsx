@@ -1,13 +1,11 @@
-import AppClima from "./components/AppClima"
+import AppClima from "./Layouts/AppClima"
 import { ClimaProvider } from './context/ClimaProvider'
-
+import Header from "./Layouts/Header"
 function App() {
 
   return (
     <ClimaProvider>
-      <header>
-        <h1>Buscador de Clima</h1>
-      </header>
+      <Header />
       <AppClima />
 
     </ClimaProvider>
