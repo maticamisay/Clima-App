@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
+import useClima from "../hooks/useClima";
 
-const Option = ({provincia}) => {
-    console.log(provincia);
+const Option = ({ provincia }) => {
+  const { busqueda, datosBusqueda } = useClima();
+  const { ciudad, pais } = busqueda;
+
+  console.log(provincia);
   return (
-    <option>{provincia.nombre}</option>
-  )
-}
+    <option id="ciudad" name="ciudad" onChange={datosBusqueda} value={ciudad}>
+      {provincia.nombre}
+    </option>
+  );
+};
 
-export default Option
+export default Option;

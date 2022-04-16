@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useClima from "../hooks/useClima";
+import provincias from "../provincias";
 import ListaProvincias from "./ListaProvincias";
 
 const Formulario = () => {
+  const [estados, setEstados] = useState("");
   const [alerta, setAlerta] = useState("");
   const { busqueda, datosBusqueda, consultarClima } = useClima();
 
   const { ciudad, pais } = busqueda;
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     const { estados } = useClima();
+  //     console.log(estados[0]);
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+  // const { estados } = useClima();
+  useEffect(() => {
+    setTimeout(() => {
+      quePais(pais), console.log(estados);
+    }, 500);
+  }, [pais]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +33,15 @@ const Formulario = () => {
     }
     setAlerta("");
     consultarClima(busqueda);
+  };
+
+  const quePais = (country) => {
+    switch (country) {
+      case "AR":
+        return setEstados(provincias.argentina);
+      case "CL":
+        return setEstados(provincias.chile);
+    }
   };
 
   return (
@@ -39,15 +64,18 @@ const Formulario = () => {
         </div>
         <div className="campo">
           <label htmlFor="ciudad">Ciudad</label>
-          <input
+          {/* <input
             type="text"
             id="ciudad"
             name="ciudad"
             onChange={datosBusqueda}
             value={ciudad}
-          />
+          /> */}
           <select>
-            <ListaProvincias />
+            <ListaProvincias
+              
+              estados={estados}
+            />
           </select>
         </div>
 

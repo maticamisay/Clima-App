@@ -1,17 +1,22 @@
-import React from "react";
-import provincias from "../provincias";
+import { React, useEffect } from "react";
 import Option from "./Option";
 
-const ListaProvincias = () => {
-  const data = provincias.argentina;
+
+function ListaProvincias({ estados }) {
+  let datos =""
+  if (estados != "") {
+    datos = estados;
+    console.log(datos);
+  }
   return (
     <>
-      {data.map((provincia) => 
-        // console.log(provincia.id);
-        (<Option key={provincia.id} provincia={provincia} />)
-      )}
+    {datos.length>1&&
+    datos.map((provincia) => (
+      <Option key={provincia.nombre} provincia={provincia} />
+    ))
+    }
     </>
   );
-};
+}
 
 export default ListaProvincias;
