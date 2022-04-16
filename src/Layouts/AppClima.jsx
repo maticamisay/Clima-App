@@ -16,7 +16,7 @@ const AppClima = () => {
               cargando ? <Loading /> : 
               resultado?.name ? <Resultado /> :
               noResultado ? <p>{noResultado}</p>
-              : <p>El clima se va a mostrar aquí</p>
+              : <p className="contenedor sinResultado">El clima se va a mostrar aquí</p>
             }
             
         </main>
