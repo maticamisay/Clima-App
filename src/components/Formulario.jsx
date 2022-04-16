@@ -6,7 +6,7 @@ import ListaProvincias from "./ListaProvincias";
 const Formulario = () => {
   const [estados, setEstados] = useState("");
   const [alerta, setAlerta] = useState("");
-  const { busqueda, datosBusqueda, consultarClima } = useClima();
+  const { busqueda, datosBusqueda, handleSubmit, consultarClima } = useClima();
 
   const { ciudad, pais } = busqueda;
 
@@ -20,20 +20,20 @@ const Formulario = () => {
   // const { estados } = useClima();
   useEffect(() => {
     setTimeout(() => {
-      quePais(pais), console.log(estados);
+      quePais(pais);
     }, 500);
   }, [pais]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    if (Object.values(busqueda).includes("")) {
-      setAlerta("Todos los campos son obligatorios");
-      return;
-    }
-    setAlerta("");
-    consultarClima(busqueda);
-  };
+  //   if (Object.values(busqueda).includes("")) {
+  //     setAlerta("Todos los campos son obligatorios");
+  //     return;
+  //   }
+  //   setAlerta("");
+  //   consultarClima(busqueda);
+  // };
 
   const quePais = (country) => {
     switch (country) {
@@ -71,12 +71,7 @@ const Formulario = () => {
             onChange={datosBusqueda}
             value={ciudad}
           /> */}
-          <select>
-            <ListaProvincias
-              
-              estados={estados}
-            />
-          </select>
+          <ListaProvincias estados={estados} setAlerta={setAlerta}/>
         </div>
 
         <input type="submit" value="Consultar Clima" />

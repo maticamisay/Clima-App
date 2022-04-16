@@ -11,6 +11,8 @@ const ClimaProvider = ({ children }) => {
   const [resultado, setResultado] = useState({});
   const [cargando, setCargando] = useState(false);
   const [noResultado, setNoResultado] = useState(false);
+  const [alerta, setAlerta] = useState("");
+
 
   function datosBusqueda (e) {
     setBusqueda({
@@ -43,7 +45,16 @@ const ClimaProvider = ({ children }) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if (Object.values(busqueda).includes("")) {
+      setAlerta("Todos los campos son obligatorios");
+      return;
+    }
+    setAlerta("");
+    consultarClima(busqueda);
+  };
 
   return (
     <ClimaContext.Provider
@@ -54,6 +65,7 @@ const ClimaProvider = ({ children }) => {
         resultado,
         cargando,
         noResultado,
+        handleSubmit
       }}
     >
       {children}
