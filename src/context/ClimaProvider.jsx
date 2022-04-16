@@ -38,7 +38,6 @@ const ClimaProvider = ({ children }) => {
 
       const { data: clima } = await axios(urlClima);
       setResultado(clima);
-      console.log(clima);
     } catch (error) {
       setNoResultado("No hay resultados");
     } finally {
@@ -48,7 +47,7 @@ const ClimaProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(busqueda);
     if (Object.values(busqueda).includes("")) {
       setAlerta("Todos los campos son obligatorios");
       return;
@@ -66,7 +65,8 @@ const ClimaProvider = ({ children }) => {
         resultado,
         cargando,
         noResultado,
-        handleSubmit
+        handleSubmit,
+        alerta
       }}
     >
       {children}

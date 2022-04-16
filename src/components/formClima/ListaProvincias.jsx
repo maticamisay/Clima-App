@@ -1,10 +1,10 @@
 import { React, useEffect } from "react";
 import Option from "./Option";
-import useClima from "../hooks/useClima";
+import useClima from "../../hooks/useClima";
 
 function ListaProvincias({ estados,setAlerta }) {
   const { busqueda, datosBusqueda } = useClima();
-  const { ciudad, pais } = busqueda;
+  const { ciudad } = busqueda;
 
   let datos = "";
   if (estados != "") {

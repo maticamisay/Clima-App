@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import useClima from "../hooks/useClima";
-import provincias from "../provincias";
+import useClima from "../../hooks/useClima";
+import provincias from "../../provincias";
 import ListaProvincias from "./ListaProvincias";
 
 const Formulario = () => {
   const [estados, setEstados] = useState("");
-  const [alerta, setAlerta] = useState("");
-  const { busqueda, datosBusqueda, handleSubmit, consultarClima } = useClima();
+  const { 
+    busqueda, 
+    datosBusqueda, 
+    handleSubmit, 
+    alerta 
+  } = useClima();
 
   const { pais } = busqueda;
 
@@ -46,7 +50,7 @@ const Formulario = () => {
         </div>
         <div className="campo">
           <label htmlFor="ciudad">Ciudad</label>
-          <ListaProvincias estados={estados} setAlerta={setAlerta} />
+          <ListaProvincias estados={estados} />
         </div>
 
         <input type="submit" value="Consultar Clima" />

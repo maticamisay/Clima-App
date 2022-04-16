@@ -1,4 +1,4 @@
-import Formulario from "../components/Formulario"
+import Formulario from "../components/formClima/Formulario"
 import Resultado from "../components/Resultado"
 import Loading from "../components/Loading"
 import useClima from "../hooks/useClima"
